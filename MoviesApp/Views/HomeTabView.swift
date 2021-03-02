@@ -8,9 +8,33 @@
 import SwiftUI
 
 struct HomeTabView: View {
+
+    enum Tab: Int {
+        case movie
+        case discover
+    }
+
+    @State private var selectedTab = Tab.movie
+
     var body: some View {
-        Text("HomeTabView")
-            .font(.largeTitle)
+        TabView(selection: $selectedTab,
+                content:  {
+                    MoviesView().tabItem {
+                        tabbarItem(text: "Movies", imageName: "film") }
+                        .tag(Tab.movie)
+                    DiscoverView().tabItem {
+                        tabbarItem(text: "Discover", imageName: "square.stack") }
+                        .tag(Tab.discover)
+                })
+    }
+
+    /// Creates a tabItem with specified text and image
+    private func tabbarItem(text: String, imageName: String) -> some View {
+        VStack {
+            Image(systemName: imageName)
+                .imageScale(.large)
+            Text(text)
+        }
     }
 }
 

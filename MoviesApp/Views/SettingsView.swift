@@ -11,13 +11,13 @@ struct SettingsView: View {
 
     @Binding var isPresented: Bool
 
-    @State private var selection = 1
+    @State private var selectedGenre = 1
     @State private var email = ""
 
     var body: some View {
         NavigationView {
             Form {
-                Picker(selection: $selection, label: Text("Favorite Genre"), content: {
+                Picker(selection: $selectedGenre, label: Text("Favorite Genre"), content: {
                     Text("Action").tag(1)
                     Text("Comedy").tag(2)
                     Text("Horror").tag(3)
