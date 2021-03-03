@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		671D962C25EF62F6008C8F02 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D962B25EF62F6008C8F02 /* Movie.swift */; };
+		671D962F25EF64DB008C8F02 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D962E25EF64DB008C8F02 /* Cast.swift */; };
+		671D963225EF6643008C8F02 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D963125EF6643008C8F02 /* Review.swift */; };
 		67E1F52125ECBDF3007EDACC /* MoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E1F52025ECBDF3007EDACC /* MoviesApp.swift */; };
 		67E1F52325ECBDF3007EDACC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E1F52225ECBDF3007EDACC /* ContentView.swift */; };
 		67E1F52525ECBDF4007EDACC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67E1F52425ECBDF4007EDACC /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		671D962B25EF62F6008C8F02 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		671D962E25EF64DB008C8F02 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
+		671D963125EF6643008C8F02 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		67E1F51D25ECBDF3007EDACC /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E1F52025ECBDF3007EDACC /* MoviesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesApp.swift; sourceTree = "<group>"; };
 		67E1F52225ECBDF3007EDACC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +104,9 @@
 		67E1F53225ECC054007EDACC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				671D962B25EF62F6008C8F02 /* Movie.swift */,
+				671D962E25EF64DB008C8F02 /* Cast.swift */,
+				671D963125EF6643008C8F02 /* Review.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,6 +191,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				671D962F25EF64DB008C8F02 /* Cast.swift in Sources */,
+				671D962C25EF62F6008C8F02 /* Movie.swift in Sources */,
+				671D963225EF6643008C8F02 /* Review.swift in Sources */,
 				67E1F54425EE19D9007EDACC /* MoviesView.swift in Sources */,
 				67E1F53D25ECC2B2007EDACC /* HomeTabView.swift in Sources */,
 				67E1F54125EE12C9007EDACC /* SettingsView.swift in Sources */,
