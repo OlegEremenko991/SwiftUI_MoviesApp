@@ -3,13 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		671D962C25EF62F6008C8F02 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D962B25EF62F6008C8F02 /* Movie.swift */; };
 		671D962F25EF64DB008C8F02 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D962E25EF64DB008C8F02 /* Cast.swift */; };
 		671D963225EF6643008C8F02 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D963125EF6643008C8F02 /* Review.swift */; };
+		671D963625EF6745008C8F02 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 671D963525EF6745008C8F02 /* Alamofire */; };
+		671D963925EF6777008C8F02 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D963825EF6777008C8F02 /* NetworkManager.swift */; };
+		671D963C25EF68A9008C8F02 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D963B25EF68A9008C8F02 /* API.swift */; };
+		671D963F25EF68EF008C8F02 /* MovieURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D963E25EF68EF008C8F02 /* MovieURL.swift */; };
+		671D964225EF6984008C8F02 /* MovieDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D964125EF6984008C8F02 /* MovieDownloadManager.swift */; };
+		671D964525EF6B01008C8F02 /* MovieReviewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D964425EF6B01008C8F02 /* MovieReviewsManager.swift */; };
+		671D964925EF6C93008C8F02 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D964825EF6C93008C8F02 /* Constant.swift */; };
 		67E1F52125ECBDF3007EDACC /* MoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E1F52025ECBDF3007EDACC /* MoviesApp.swift */; };
 		67E1F52325ECBDF3007EDACC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E1F52225ECBDF3007EDACC /* ContentView.swift */; };
 		67E1F52525ECBDF4007EDACC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67E1F52425ECBDF4007EDACC /* Assets.xcassets */; };
@@ -24,6 +31,12 @@
 		671D962B25EF62F6008C8F02 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		671D962E25EF64DB008C8F02 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 		671D963125EF6643008C8F02 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		671D963825EF6777008C8F02 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		671D963B25EF68A9008C8F02 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		671D963E25EF68EF008C8F02 /* MovieURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieURL.swift; sourceTree = "<group>"; };
+		671D964125EF6984008C8F02 /* MovieDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDownloadManager.swift; sourceTree = "<group>"; };
+		671D964425EF6B01008C8F02 /* MovieReviewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieReviewsManager.swift; sourceTree = "<group>"; };
+		671D964825EF6C93008C8F02 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		67E1F51D25ECBDF3007EDACC /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E1F52025ECBDF3007EDACC /* MoviesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesApp.swift; sourceTree = "<group>"; };
 		67E1F52225ECBDF3007EDACC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				671D963625EF6745008C8F02 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +111,12 @@
 		67E1F53125ECC047007EDACC /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				671D964825EF6C93008C8F02 /* Constant.swift */,
+				671D963825EF6777008C8F02 /* NetworkManager.swift */,
+				671D963B25EF68A9008C8F02 /* API.swift */,
+				671D963E25EF68EF008C8F02 /* MovieURL.swift */,
+				671D964125EF6984008C8F02 /* MovieDownloadManager.swift */,
+				671D964425EF6B01008C8F02 /* MovieReviewsManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -138,6 +158,9 @@
 			dependencies = (
 			);
 			name = MoviesApp;
+			packageProductDependencies = (
+				671D963525EF6745008C8F02 /* Alamofire */,
+			);
 			productName = Movies_App;
 			productReference = 67E1F51D25ECBDF3007EDACC /* MoviesApp.app */;
 			productType = "com.apple.product-type.application";
@@ -165,6 +188,9 @@
 				Base,
 			);
 			mainGroup = 67E1F51425ECBDF3007EDACC;
+			packageReferences = (
+				671D963425EF6745008C8F02 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 67E1F51E25ECBDF3007EDACC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -191,12 +217,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				671D963C25EF68A9008C8F02 /* API.swift in Sources */,
 				671D962F25EF64DB008C8F02 /* Cast.swift in Sources */,
+				671D964925EF6C93008C8F02 /* Constant.swift in Sources */,
 				671D962C25EF62F6008C8F02 /* Movie.swift in Sources */,
+				671D963925EF6777008C8F02 /* NetworkManager.swift in Sources */,
 				671D963225EF6643008C8F02 /* Review.swift in Sources */,
+				671D964225EF6984008C8F02 /* MovieDownloadManager.swift in Sources */,
 				67E1F54425EE19D9007EDACC /* MoviesView.swift in Sources */,
 				67E1F53D25ECC2B2007EDACC /* HomeTabView.swift in Sources */,
+				671D964525EF6B01008C8F02 /* MovieReviewsManager.swift in Sources */,
 				67E1F54125EE12C9007EDACC /* SettingsView.swift in Sources */,
+				671D963F25EF68EF008C8F02 /* MovieURL.swift in Sources */,
 				67E1F52325ECBDF3007EDACC /* ContentView.swift in Sources */,
 				67E1F52125ECBDF3007EDACC /* MoviesApp.swift in Sources */,
 				67E1F54725EE19EA007EDACC /* DiscoverView.swift in Sources */,
@@ -388,6 +420,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		671D963425EF6745008C8F02 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		671D963525EF6745008C8F02 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 671D963425EF6745008C8F02 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 67E1F51525ECBDF3007EDACC /* Project object */;
 }
