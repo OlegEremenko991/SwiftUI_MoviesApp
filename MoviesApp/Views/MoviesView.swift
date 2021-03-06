@@ -77,7 +77,7 @@ struct MoviesView: View {
                     }
                 ) { movie in
                     NavigationLink(
-                        destination: Text(movie.titleWithLanguage),
+                        destination: MovieDetailView(movie: movie),
                         label: { MovieCell(movie: movie) }
                     ).listRowBackground(Color.clear)
                 }

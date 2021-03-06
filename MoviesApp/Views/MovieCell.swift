@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct MovieCell: View {
+
+    // MARK: - Public properties
+
     var movie: Movie
+
+    // MARK: - View
 
     var body: some View {
         HStack(alignment: .top, spacing: 20, content: {
