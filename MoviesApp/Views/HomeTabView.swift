@@ -32,7 +32,6 @@ struct HomeTabView: View {
                 })
     }
 
-    /// Creates a tabItem with specified text and image
     private func tabbarItem(text: String, imageName: String) -> some View {
         VStack {
             Image(systemName: imageName)

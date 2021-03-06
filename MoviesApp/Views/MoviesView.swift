@@ -11,11 +11,10 @@ struct MoviesView: View {
 
     // MARK: - Private properties
 
+    @ObservedObject private var movieManager = MovieDownloadManager()
     @State private var searchTerm = ""
     @State private var selectionIndex = 0
     @State private var tabs = ["Now Playing", "Upcoming", "Trending"]
-
-    @ObservedObject private var movieManager = MovieDownloadManager()
 
     // MARK: - Init
 
@@ -28,39 +27,12 @@ struct MoviesView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Text(tabs[selectionIndex])
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(.red)
-                    .padding(.top)
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .imageScale(.medium)
-                    TextField("Search...", text: $searchTerm)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
-            }.padding(.horizontal)
+                titleView
+                searchViewWithTextField
+            }
+            .padding(.horizontal)
 
-            // Segmented control (Picker)
-            VStack {
-                Picker("_", selection: $selectionIndex) {
-                    ForEach(0..<tabs.count) { index in
-                        Text(tabs[index])
-                            .font(.title)
-                            .bold()
-                            .tag(index)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .onChange(of: selectionIndex) { _ in
-                    switch selectionIndex {
-                    case 0: movieManager.getNowPlaying()
-                    case 1: movieManager.getUpcoming()
-                    case 2: movieManager.getPopular()
-                    default: break
-                    }
-                }
-            }.padding()
+            segmentedControlPicker
             List {
                 ForEach(
                     movieManager.movies.filter {
@@ -77,6 +49,46 @@ struct MoviesView: View {
             }
             Spacer()
         }
+    }
+
+    private var titleView: some View {
+        Text(tabs[selectionIndex])
+            .font(.largeTitle)
+            .bold()
+            .foregroundColor(.red)
+            .padding(.top)
+    }
+
+    private var searchViewWithTextField: some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+                .imageScale(.medium)
+            TextField("Search...", text: $searchTerm)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+        }
+    }
+
+    private var segmentedControlPicker: some View {
+        VStack {
+            Picker("_", selection: $selectionIndex) {
+                ForEach(0..<tabs.count) { index in
+                    Text(tabs[index])
+                        .font(.title)
+                        .bold()
+                        .tag(index)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .onChange(of: selectionIndex) { _ in
+                switch selectionIndex {
+                case 0: movieManager.getNowPlaying()
+                case 1: movieManager.getUpcoming()
+                case 2: movieManager.getPopular()
+                default: break
+                }
+            }
+        }
+        .padding()
     }
 
     // MARK: - Private methods
