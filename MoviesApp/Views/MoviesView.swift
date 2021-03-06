@@ -9,27 +9,18 @@ import SwiftUI
 
 struct MoviesView: View {
 
-    @ObservedObject var movieManager = MovieDownloadManager()
-
     // MARK: - Private properties
 
     @State private var searchTerm = ""
     @State private var selectionIndex = 0
     @State private var tabs = ["Now Playing", "Upcoming", "Trending"]
 
+    @ObservedObject private var movieManager = MovieDownloadManager()
+
     // MARK: - Init
 
     init() {
-        UITableView.appearance().backgroundColor = .clear
-        UITableViewCell.appearance().selectionStyle = .none
-
-        UINavigationBar.appearance().backgroundColor = .clear
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().barTintColor = .orange
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.orange]
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.orange]
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().shadowImage = UIImage()
+        setupAppearance()
     }
 
     // MARK: - View
@@ -87,7 +78,23 @@ struct MoviesView: View {
             Spacer()
         }
     }
+
+    // MARK: - Private methods
+
+    private func setupAppearance() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().selectionStyle = .none
+        UINavigationBar.appearance().backgroundColor = .clear
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().barTintColor = .orange
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.orange]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.orange]
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+    }
 }
+
+// MARK: - Preview
 
 struct MoviesView_Previews: PreviewProvider {
     static var previews: some View {

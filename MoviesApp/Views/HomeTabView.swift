@@ -9,12 +9,16 @@ import SwiftUI
 
 struct HomeTabView: View {
 
-    enum Tab: Int {
+    // MARK: - Private properties
+
+    private enum Tab: Int {
         case movie
         case discover
     }
 
     @State private var selectedTab = Tab.movie
+
+    // MARK: - View
 
     var body: some View {
         TabView(selection: $selectedTab,
@@ -37,6 +41,8 @@ struct HomeTabView: View {
         }
     }
 }
+
+// MARK: - Preview
 
 struct HomeTabView_Previews: PreviewProvider {
     static var previews: some View {

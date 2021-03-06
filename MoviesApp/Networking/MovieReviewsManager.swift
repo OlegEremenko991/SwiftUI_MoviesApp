@@ -26,7 +26,7 @@ final class MovieReviewManager: ObservableObject {
     // MARK: - Public methods
 
     func getMovieReviews() {
-
+        getReview(for: movie)
     }
 
 

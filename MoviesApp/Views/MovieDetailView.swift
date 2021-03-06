@@ -95,7 +95,7 @@ struct MovieDetailView: View {
         VStack {
             Divider()
             NavigationLink(
-                destination: Text("Some review"),
+                destination: MovieReviewView(movie: movie),
                 label: {
                     HStack {
                         Text("Reviews")
