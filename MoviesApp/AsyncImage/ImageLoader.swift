@@ -10,13 +10,19 @@ import UIKit
 
 final class ImageLoader: ObservableObject {
 
+    // MARK: - Public properties
+
     @Published var image: UIImage?
 
+    // MARK: - Private properties
+
     private(set) var isLoading = false
+    private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
     private let url: URL
     private var cache: ImageCache?
     private var cancellable: AnyCancellable?
-    private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
+
+    // MARK: - Lifecycle
 
     init(url: URL, cache: ImageCache? = nil) {
         self.url = url
@@ -26,6 +32,8 @@ final class ImageLoader: ObservableObject {
     deinit {
         cancel()
     }
+
+    // MARK: - Public methods
 
     func load() {
         guard !isLoading else { return }
@@ -49,10 +57,11 @@ final class ImageLoader: ObservableObject {
             .sink { [weak self] in self?.image = $0 }
     }
 
+    // MARK: - Private methods
+
     private func onStart() { isLoading = true }
+    private func cache(_ image: UIImage?) { image.map { cache?[url] = $0 } }
     private func onFinish() { isLoading = false }
-    private func cache(_ image: UIImage?) {
-        image.map { cache?[url] = $0 }
-    }
     private func cancel() { cancellable?.cancel() }
+
 }

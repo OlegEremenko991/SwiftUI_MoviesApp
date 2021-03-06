@@ -10,9 +10,14 @@ import Foundation
 import SwiftUI
 
 struct AsyncImage<Placeholder: View>: View {
+
+    // MARK: Private properties
+
     @StateObject private var loader: ImageLoader
     private let placeholder: Placeholder
     private let image: (UIImage) -> Image
+
+    // MARK: - Init
 
     init(url: URL,
         @ViewBuilder placeholder: () -> Placeholder,
@@ -22,6 +27,8 @@ struct AsyncImage<Placeholder: View>: View {
         self.image = image
         _loader = StateObject(wrappedValue: ImageLoader(url: url, cache: Environment(\.imageCache).wrappedValue))
     }
+
+    // MARK: - View
 
     var body: some View {
         content.onAppear(perform: loader.load )
@@ -36,4 +43,5 @@ struct AsyncImage<Placeholder: View>: View {
             }
         }
     }
+
 }
