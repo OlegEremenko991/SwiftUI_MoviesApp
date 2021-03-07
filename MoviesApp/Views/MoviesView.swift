@@ -31,22 +31,8 @@ struct MoviesView: View {
                 searchViewWithTextField
             }
             .padding(.horizontal)
-
             segmentedControlPicker
-            List {
-                ForEach(
-                    movieManager.movies.filter {
-                        searchTerm.isEmpty ? true : $0.title?.lowercased().localizedStandardContains(searchTerm.lowercased()) ?? true
-                    }
-                ) { movie in
-                    NavigationLink(
-                        destination: MovieDetailView(movie: movie),
-                        label: { MovieCell(movie: movie) }
-                    ).listRowBackground(Color.clear)
-                }
-            }.onAppear {
-                movieManager.getNowPlaying()
-            }
+            moviesList
             Spacer()
         }
     }
@@ -66,6 +52,23 @@ struct MoviesView: View {
             TextField("Search...", text: $searchTerm)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
         }
+    }
+
+    private var moviesList: some View {
+        List {
+            ForEach(
+                movieManager.movies.filter {
+                    searchTerm.isEmpty ? true : $0.title?.lowercased().localizedStandardContains(searchTerm.lowercased()) ?? true
+                }
+            ) { movie in
+                NavigationLink(
+                    destination: MovieDetailView(movie: movie),
+                    label: { MovieCell(movie: movie) }
+                )
+                .listRowBackground(Color.clear)
+            }
+        }
+        .onAppear { movieManager.getNowPlaying() }
     }
 
     private var segmentedControlPicker: some View {

@@ -44,9 +44,7 @@ struct MovieReviewView: View {
                     .listRowBackground(Color.clear)
                 }
             }
-            .onAppear {
-                movieReviewManager.getMovieReviews()
-            }
+            .onAppear { movieReviewManager.getMovieReviews() }
             .padding(.horizontal, 32)
         }
         .edgesIgnoringSafeArea(.all)

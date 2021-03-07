@@ -17,7 +17,7 @@ final class MovieReviewManager: ObservableObject {
 
     private var movie: Movie
 
-    // MARK: - Lifecycle
+    // MARK: - Init
 
     init(movie: Movie) {
         self.movie = movie

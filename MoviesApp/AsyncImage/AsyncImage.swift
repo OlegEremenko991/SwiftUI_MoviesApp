@@ -5,8 +5,6 @@
 //  Created by Олег Еременко on 06.03.2021.
 //
 
-import Foundation
-
 import SwiftUI
 
 struct AsyncImage<Placeholder: View>: View {
@@ -31,17 +29,16 @@ struct AsyncImage<Placeholder: View>: View {
     // MARK: - View
 
     var body: some View {
-        content.onAppear(perform: loader.load )
+        content.onAppear(perform: loader.load)
     }
 
     private var content: some View {
         Group {
-            if loader.image != nil {
-                image(loader.image!)
+            if let image = loader.image {
+                self.image(image)
             } else {
                 placeholder
             }
         }
     }
-
 }

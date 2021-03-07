@@ -48,17 +48,18 @@ struct MovieDetailView: View {
     }
 
     private var backgroundView: some View {
-        imageView.onAppear {loader.load() }
-        .blur(radius: 100)
+        imageView.onAppear { loader.load() }
+            .blur(radius: 100)
     }
 
     private var imageView: some View {
         Group {
-            if loader.image != nil {
-                Image(uiImage: loader.image!)
+            if let image = loader.image {
+                Image(uiImage: image)
                     .resizable()
             } else {
-                Rectangle().foregroundColor(Color.gray.opacity(0.4))
+                Rectangle()
+                    .foregroundColor(Color.gray.opacity(0.4))
             }
         }
     }
@@ -118,9 +119,10 @@ struct MovieDetailView: View {
                     ForEach(movieManager.cast) { cast in
                         VStack {
                             AsyncImage(url: URL(string: cast.profilePhoto)!) {
-                                Rectangle().foregroundColor(Color.gray.opacity(0.4))
-                            } image: { image -> Image in
-                                Image(uiImage: image)
+                                Rectangle()
+                                    .foregroundColor(Color.gray.opacity(0.4))
+                            } image: {
+                                Image(uiImage: $0)
                                     .resizable()
                             }
                             .frame(width: 100, height: 160)
@@ -140,8 +142,6 @@ struct MovieDetailView: View {
                 }
             }
         }
-        .onAppear {
-            movieManager.getCast(for: movie)
-        }
+        .onAppear { movieManager.getCast(for: movie) }
     }
 }

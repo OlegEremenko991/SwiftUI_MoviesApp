@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
 
+    // MARK: - Private properties
+
     @State private var showSettings = false
+
+    // MARK: - View
 
     var body: some View {
         NavigationView {
@@ -34,10 +38,13 @@ struct ContentView: View {
                 Image(systemName: "gear")
                     .imageScale(.large)
                     .foregroundColor(.gray)
-            }.frame(width: 30, height: 30)
+            }
+            .frame(width: 30, height: 30)
         })
     }
 }
+
+// MARK: - Preview
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

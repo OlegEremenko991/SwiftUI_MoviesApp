@@ -31,12 +31,14 @@ struct Movie: Codable, Identifiable {
             return ""
         }
     }
+
     var voteAverage: Double {
         if let avg = vote_average {
             return avg / 10.0
         }
         return 0.0
     }
+
     var titleWithLanguage: String {
         guard let title = title,
               let lang = original_language else { return "" }

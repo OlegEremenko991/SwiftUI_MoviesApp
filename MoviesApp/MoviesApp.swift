@@ -3,7 +3,7 @@
 //  MoviesApp
 //
 //  Created by Олег Еременко on 01.03.2021.
-// API: https://www.themoviedb.org/settings/api
+//  API: https://www.themoviedb.org/settings/api
 
 import SwiftUI
 

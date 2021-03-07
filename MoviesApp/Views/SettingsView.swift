@@ -28,7 +28,8 @@ struct SettingsView: View {
                     TextField("Email", text: $email)
                 }
                 saveButton
-            }.navigationTitle("Settings")
+            }
+            .navigationTitle("Settings")
         }
     }
 
