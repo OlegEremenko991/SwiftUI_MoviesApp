@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AsyncImage<Placeholder: View>: View {
 
-    // MARK: Private properties
+    // MARK: - Private properties
 
     @StateObject private var loader: ImageLoader
     private let placeholder: Placeholder

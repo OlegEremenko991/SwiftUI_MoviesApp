@@ -51,9 +51,7 @@ struct DiscoverView: View {
                         }
                     })
             )
-            .onAppear {
-                movieManager.getPopular()
-            }
+            .onAppear { movieManager.getPopular() }
         }
     }
 
