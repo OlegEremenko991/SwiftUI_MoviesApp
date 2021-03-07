@@ -144,4 +144,5 @@ struct MovieDetailView: View {
         }
         .onAppear { movieManager.getCast(for: movie) }
     }
+
 }

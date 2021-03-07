@@ -9,6 +9,9 @@ import SwiftUI
 
 struct MovieCell: View {
 
+    @AppStorage("RecentlyOpenedMovie", store: UserDefaults(suiteName: "group.com.oleg991.MoviesApp"))
+    var recentlyOpenedMovie = Data()
+
     // MARK: - Public properties
 
     var movie: Movie
@@ -42,6 +45,9 @@ struct MovieCell: View {
         .scaledToFill()
         .cornerRadius(15)
         .shadow(radius: 15)
+        .onTapGesture {
+            save(movie)
+        }
     }
 
     private var movieTitle: some View {
@@ -81,5 +87,12 @@ struct MovieCell: View {
             .font(.body)
             .foregroundColor(.gray)
     }
+
+    private func save(_ movie: Movie) {
+        guard let movieData = try? JSONEncoder().encode(movie) else { return }
+        recentlyOpenedMovie = movieData
+        print("save \(movie)")
+    }
+
 }
 
