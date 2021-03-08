@@ -15,6 +15,9 @@ This is a small project to practice SwiftUI.
 5. Swipe movies on "Discover" screen
 6. Open "Settings" screen
 
+### Widget
+MoviesWidget displays info about a movie you recently opened in the app.
+
 ## Screenshots
 
 [Link to google drive](https://drive.google.com/drive/folders/1-wGfWLw_6K902gpfmpnvr4PlbrSb7P-H?usp=sharing)
