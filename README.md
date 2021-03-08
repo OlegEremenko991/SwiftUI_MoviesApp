@@ -16,7 +16,7 @@ This is a small project to practice SwiftUI.
 6. Open "Settings" screen
 
 ### Widget
-MoviesWidget displays info about a movie you recently opened in the app.
+MoviesWidget displays info about a movie you recently opened in the app (title and release date).
 
 ## Screenshots
 
