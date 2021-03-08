@@ -9,7 +9,7 @@ import WidgetKit
 import SwiftUI
 
 struct MovieEntry: TimelineEntry {
-    let date: Date
+    let date = Date()
     let movie: Movie
 }
 
@@ -19,18 +19,18 @@ struct Provider: TimelineProvider {
     var recentlyOpenedMovie = Data()
 
     func placeholder(in context: Context) -> MovieEntry {
-        MovieEntry(date: Date(), movie: Movie(title: "-"))
+        MovieEntry(movie: Movie(title: "-"))
     }
 
     func getSnapshot(in context: Context, completion: @escaping (MovieEntry) -> Void) {
         guard let movie = try? JSONDecoder().decode(Movie.self, from: recentlyOpenedMovie) else { return }
-        let entry = MovieEntry(date: Date(), movie: movie)
+        let entry = MovieEntry(movie: movie)
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<MovieEntry>) -> Void) {
         guard let movie = try? JSONDecoder().decode(Movie.self, from: recentlyOpenedMovie) else { return }
-        let entry = MovieEntry(date: Date(), movie: movie)
+        let entry = MovieEntry(movie: movie)
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
     }

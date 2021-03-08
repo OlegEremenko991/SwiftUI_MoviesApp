@@ -69,8 +69,8 @@ struct DiscoverView: View {
     private func poster(movie: Movie) -> some View{
         AsyncImage(url: URL(string: movie.posterPath)!) {
             Rectangle().foregroundColor(.gray)
-        } image: { image -> Image in
-            Image(uiImage: image)
+        } image: {
+            Image(uiImage: $0)
                 .resizable()
         }
         .animation(.easeInOut(duration: 0.5))

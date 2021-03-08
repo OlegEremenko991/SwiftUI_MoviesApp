@@ -21,7 +21,6 @@
 		675AE48725F55F62003554FD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BCCDD525F3A52F00CA322B /* ImageLoader.swift */; };
 		675AE48A25F55F6F003554FD /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BCCDDB25F3A98A00CA322B /* EnvironmentValues+ImageCache.swift */; };
 		675AE48D25F55F7B003554FD /* TempImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BCCDD825F3A57800CA322B /* TempImageCache.swift */; };
-		675AE4C425F5636F003554FD /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BCCDE225F3E37700CA322B /* MovieCell.swift */; };
 		676166FC25F5555000FDA167 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676166FB25F5555000FDA167 /* WidgetKit.framework */; };
 		676166FE25F5555000FDA167 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676166FD25F5555000FDA167 /* SwiftUI.framework */; };
 		6761670125F5555000FDA167 /* MoviesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6761670025F5555000FDA167 /* MoviesWidget.swift */; };
@@ -351,7 +350,6 @@
 			files = (
 				675AE48425F55F5B003554FD /* AsyncImage.swift in Sources */,
 				6761670125F5555000FDA167 /* MoviesWidget.swift in Sources */,
-				675AE4C425F5636F003554FD /* MovieCell.swift in Sources */,
 				675AE48A25F55F6F003554FD /* EnvironmentValues+ImageCache.swift in Sources */,
 				675AE48725F55F62003554FD /* ImageLoader.swift in Sources */,
 				675AE48D25F55F7B003554FD /* TempImageCache.swift in Sources */,

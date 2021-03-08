@@ -9,6 +9,9 @@ import SwiftUI
 
 struct MovieDetailView: View {
 
+    @AppStorage("RecentlyOpenedMovie", store: UserDefaults(suiteName: "group.com.oleg991.MoviesApp"))
+    var recentlyOpenedMovie = Data()
+
     // MARK: - Public properties
 
     var movie: Movie
@@ -45,6 +48,7 @@ struct MovieDetailView: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
+        .onAppear { save(movie) }
     }
 
     private var backgroundView: some View {
@@ -143,6 +147,14 @@ struct MovieDetailView: View {
             }
         }
         .onAppear { movieManager.getCast(for: movie) }
+    }
+
+    // MARK: - Private methods
+
+    private func save(_ movie: Movie) {
+        guard let movieData = try? JSONEncoder().encode(movie) else { return }
+        recentlyOpenedMovie = movieData
+        print("save \(movie)")
     }
 
 }
