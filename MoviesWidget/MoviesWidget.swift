@@ -43,7 +43,7 @@ struct MoviesWidgetEntryView: View {
         VStack {
             Spacer()
             Text(entry.movie.title ?? "")
-                .font(.title)
+                .font(.title2)
             Text("Release date: \(entry.movie.release_date ?? "") ")
             Spacer()
         }
