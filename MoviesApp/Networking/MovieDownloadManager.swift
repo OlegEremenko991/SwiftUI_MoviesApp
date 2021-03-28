@@ -12,7 +12,7 @@ final class MovieDownloadManager: ObservableObject {
     // MARK: - Public properties
 
     @Published var movies = [Movie]()
-    @Published var cast = [Cast]()
+    @Published var cast   = [Cast]()
 
     // MARK: - Public methods
 
@@ -52,5 +52,6 @@ final class MovieDownloadManager: ObservableObject {
             }
         }
     }
+
 }
 

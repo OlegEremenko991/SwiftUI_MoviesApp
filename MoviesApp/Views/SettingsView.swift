@@ -11,12 +11,12 @@ struct SettingsView: View {
 
     // MARK: - Public properties
 
-    @Binding var isPresented: Bool
+    @Binding var isPresented         : Bool
 
     // MARK: - Private properties
 
     @State private var selectedGenre = 1
-    @State private var email = ""
+    @State private var email         = ""
 
     // MARK: - View
 
@@ -35,21 +35,20 @@ struct SettingsView: View {
 
     private var genrePicker: some View {
         Picker(selection: $selectedGenre,
-               label: Text("Favorite Genre"),
-               content: {
-                Text("Action").tag(1)
-                Text("Comedy").tag(2)
-                Text("Horror").tag(3)
-                Text("Scify").tag(4)
-        })
+               label: Text("Favorite Genre")) {
+            Text("Action").tag(1)
+            Text("Comedy").tag(2)
+            Text("Horror").tag(3)
+            Text("Scify").tag(4)
+        }
     }
 
     private var saveButton: some View {
-        Button(action: {
+        Button {
             isPresented.toggle()
-        }, label: {
+        } label: {
             Text("Save")
-        })
+        }
     }
 }
 

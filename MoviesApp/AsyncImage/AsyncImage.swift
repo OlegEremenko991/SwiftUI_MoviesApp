@@ -11,9 +11,9 @@ struct AsyncImage<Placeholder: View>: View {
 
     // MARK: - Private properties
 
-    @StateObject private var loader: ImageLoader
-    private let placeholder: Placeholder
-    private let image: (UIImage) -> Image
+    @StateObject private var loader : ImageLoader
+    private let placeholder         : Placeholder
+    private let image               : (UIImage) -> Image
 
     // MARK: - Init
 

@@ -9,14 +9,12 @@ import SwiftUI
 
 struct DiscoverView: View {
 
-
-
     // MARK: - Private properties
 
-    @ObservedObject private var movieManager = MovieDownloadManager()
-    @State private var offset: CGFloat = 0
-    @State private var index = 0
-    private let spacing: CGFloat = 10
+    @StateObject private var movieManager = MovieDownloadManager()
+    @State private var offset             : CGFloat = 0
+    @State private var index              = 0
+    private let spacing                   : CGFloat = 10
 
     // MARK: - View
 
@@ -34,10 +32,10 @@ struct DiscoverView: View {
             .frame(width: geo.size.width, alignment: .leading)
             .gesture(
                 DragGesture()
-                    .onChanged({ value in
+                    .onChanged { value in
                         offset = value.translation.width - geo.size.width * CGFloat(index)
-                    })
-                    .onEnded( { value in
+                    }
+                    .onEnded { value in
                         if -value.predictedEndTranslation.width > geo.size.width / 2,
                            index < movieManager.movies.count - 1 {
                             index += 1
@@ -49,13 +47,11 @@ struct DiscoverView: View {
                         withAnimation {
                             offset = -(geo.size.width + spacing) * CGFloat(index)
                         }
-                    })
+                    }
             )
             .onAppear { movieManager.getPopular() }
         }
     }
-
-    // MARK: - Private methods
 
     private func movieCard(movie: Movie) -> some View {
         ZStack(alignment: .bottom) {
@@ -68,7 +64,8 @@ struct DiscoverView: View {
 
     private func poster(movie: Movie) -> some View{
         AsyncImage(url: URL(string: movie.posterPath)!) {
-            Rectangle().foregroundColor(.gray)
+            Rectangle()
+                .foregroundColor(.gray)
         } image: {
             Image(uiImage: $0)
                 .resizable()
@@ -107,17 +104,15 @@ struct DiscoverView: View {
                     .foregroundColor(.black)
                     .padding(.horizontal)
                     .padding(.top)
-                NavigationLink(
-                    destination: MovieDetailView(movie: movie),
-                    label: {
-                        Text("Details")
-                            .bold()
-                            .padding()
-                            .foregroundColor(.black)
-                            .background(Color.orange)
-                            .cornerRadius(12)
-                    })
-                    .padding()
+                NavigationLink(destination: MovieDetailView(movie: movie)) {
+                    Text("Details")
+                        .bold()
+                        .padding()
+                        .foregroundColor(.black)
+                        .background(Color.orange)
+                        .cornerRadius(12)
+                }
+                .padding()
             }
             .background(Color.white.opacity(0.6))
             .cornerRadius(12)

@@ -9,17 +9,17 @@ import SwiftUI
 
 struct MovieDetailView: View {
 
-    @AppStorage("RecentlyOpenedMovie", store: UserDefaults(suiteName: "group.com.oleg991.MoviesApp"))
-    var recentlyOpenedMovie = Data()
-
     // MARK: - Public properties
 
-    var movie: Movie
+    @AppStorage("RecentlyOpenedMovie", store: UserDefaults(suiteName: "group.com.oleg991.MoviesApp"))
+    var recentlyOpenedMovie               = Data()
+
+    var movie                             : Movie
 
     // MARK: - Private properties
 
-    @StateObject private var loader: ImageLoader
-    @ObservedObject private var movieManager = MovieDownloadManager()
+    @StateObject private var loader       : ImageLoader
+    @StateObject private var movieManager = MovieDownloadManager()
 
     // MARK: - Init
 
@@ -99,18 +99,16 @@ struct MovieDetailView: View {
     private var reviewLink: some View {
         VStack {
             Divider()
-            NavigationLink(
-                destination: MovieReviewView(movie: movie),
-                label: {
-                    HStack {
-                        Text("Reviews")
-                            .font(.body)
-                            .fontWeight(.medium)
-                            .foregroundColor(.white)
-                        Spacer()
-                    }
-                })
-                Divider()
+            NavigationLink(destination: MovieReviewView(movie: movie)) {
+                HStack {
+                    Text("Reviews")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .foregroundColor(.white)
+                    Spacer()
+                }
+            }
+            Divider()
         }
     }
 

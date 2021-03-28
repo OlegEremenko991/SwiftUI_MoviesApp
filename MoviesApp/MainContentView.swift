@@ -21,26 +21,27 @@ struct MainContentView: View {
                 HomeTabView()
             }
             .navigationBarTitle("Movies", displayMode: .automatic)
-            .navigationBarItems(trailing: HStack {
-                settingsButton
-            })
-            .sheet(isPresented: $showSettings, content: {
+            .navigationBarItems(trailing:
+                                    HStack {
+                                        settingsButton
+                                    })
+            .sheet(isPresented: $showSettings) {
                 SettingsView(isPresented: $showSettings)
-            })
+            }
         }
     }
 
     private var settingsButton: some View {
-        Button(action: {
+        Button {
             showSettings.toggle()
-        }, label: {
+        } label: {
             HStack {
                 Image(systemName: "gear")
                     .imageScale(.large)
                     .foregroundColor(.gray)
             }
             .frame(width: 30, height: 30)
-        })
+        }
     }
 }
 

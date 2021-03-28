@@ -16,7 +16,7 @@ struct MovieCell: View {
     // MARK: - View
 
     var body: some View {
-        HStack(alignment: .top, spacing: 20, content: {
+        HStack(alignment: .top, spacing: 20) {
             moviePoster
             VStack(alignment: .leading, spacing: 0) {
                 movieTitle
@@ -26,7 +26,7 @@ struct MovieCell: View {
                 }
                 movieOverview
             }
-        })
+        }
     }
 
     private var moviePoster: some View {
@@ -58,7 +58,7 @@ struct MovieCell: View {
                 .stroke(Color.orange, lineWidth: 4)
                 .frame(width: 50)
                 .rotationEffect(.degrees(-90))
-            Circle()// Secondary circle
+            Circle() // Secondary circle
                 .trim(from: 0, to: 1)
                 .stroke(Color.orange.opacity(0.2), lineWidth: 4)
                 .frame(width: 50)

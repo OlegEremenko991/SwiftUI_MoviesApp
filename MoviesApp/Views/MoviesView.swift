@@ -11,10 +11,10 @@ struct MoviesView: View {
 
     // MARK: - Private properties
 
-    @ObservedObject private var movieManager = MovieDownloadManager()
-    @State private var searchTerm = ""
-    @State private var selectionIndex = 0
-    @State private var tabs = ["Now Playing", "Upcoming", "Trending"]
+    @StateObject private var movieManager = MovieDownloadManager()
+    @State private var searchTerm         = ""
+    @State private var selectionIndex     = 0
+    @State private var tabs               = ["Now Playing", "Upcoming", "Trending"]
 
     // MARK: - Init
 
@@ -56,11 +56,10 @@ struct MoviesView: View {
 
     private var moviesList: some View {
         List {
-            ForEach(
-                movieManager.movies.filter {
-                    searchTerm.isEmpty ? true : $0.title?.lowercased().localizedStandardContains(searchTerm.lowercased()) ?? true
-                }
-            ) { movie in
+            ForEach(movieManager.movies.filter {
+                searchTerm.isEmpty ? true : $0.title?.lowercased()
+                    .localizedStandardContains(searchTerm.lowercased()) ?? true
+                }) { movie in
                 NavigationLink(
                     destination: MovieDetailView(movie: movie),
                     label: { MovieCell(movie: movie) }

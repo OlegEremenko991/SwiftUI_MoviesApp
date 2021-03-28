@@ -15,7 +15,7 @@ final class MovieReviewManager: ObservableObject {
 
     // MARK: - Private properties
 
-    private var movie: Movie
+    private var movie      : Movie
 
     // MARK: - Init
 
@@ -28,7 +28,6 @@ final class MovieReviewManager: ObservableObject {
     func getMovieReviews() {
         getReview(for: movie)
     }
-
 
     // MARK: - Private methods
 
@@ -43,4 +42,5 @@ final class MovieReviewManager: ObservableObject {
             }
         }
     }
+
 }

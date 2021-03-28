@@ -8,8 +8,8 @@
 import Foundation
 
 struct Constant {
-    static let baseURL = "https://api.themoviedb.org/3/movie/"
-    static let castPath = "credits"
+    static let baseURL    = "https://api.themoviedb.org/3/movie/"
+    static let castPath   = "credits"
     static let reviewPath = "reviews"
-    static let language = "en-US"
+    static let language   = "en-US"
 }

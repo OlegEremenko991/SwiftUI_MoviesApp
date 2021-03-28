@@ -11,11 +11,11 @@ struct MovieReviewView: View {
 
     // MARK: Public properties
 
-    var movie: Movie
+    var movie                                      : Movie
 
     // MARK: - Private properties
 
-    @ObservedObject private var movieReviewManager: MovieReviewManager
+    @ObservedObject private var movieReviewManager : MovieReviewManager
 
     // MARK: - Init
 
@@ -53,8 +53,8 @@ struct MovieReviewView: View {
     // MARK: - Private methods
 
     private func setupTableViewAppearance() {
-        UITableView.appearance().separatorStyle = .none
-        UITableView.appearance().backgroundColor = .clear
+        UITableView.appearance().separatorStyle      = .none
+        UITableView.appearance().backgroundColor     = .clear
         UITableViewCell.appearance().backgroundColor = .clear
     }
 

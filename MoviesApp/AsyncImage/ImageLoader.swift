@@ -12,15 +12,15 @@ final class ImageLoader: ObservableObject {
 
     // MARK: - Public properties
 
-    @Published var image: UIImage?
+    @Published var image                    : UIImage?
 
     // MARK: - Private properties
 
-    private(set) var isLoading = false
+    private(set) var isLoading              = false
     private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
-    private let url: URL
-    private var cache: ImageCache?
-    private var cancellable: AnyCancellable?
+    private let url                         : URL
+    private var cache                       : ImageCache?
+    private var cancellable                 : AnyCancellable?
 
     // MARK: - Lifecycle
 
@@ -59,9 +59,9 @@ final class ImageLoader: ObservableObject {
 
     // MARK: - Private methods
 
-    private func onStart() { isLoading = true }
+    private func onStart()                { isLoading = true }
     private func cache(_ image: UIImage?) { image.map { cache?[url] = $0 } }
-    private func onFinish() { isLoading = false }
-    private func cancel() { cancellable?.cancel() }
+    private func onFinish()               { isLoading = false }
+    private func cancel()                 { cancellable?.cancel() }
 
 }

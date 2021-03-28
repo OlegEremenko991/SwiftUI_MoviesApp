@@ -21,15 +21,14 @@ struct HomeTabView: View {
     // MARK: - View
 
     var body: some View {
-        TabView(selection: $selectedTab,
-                content:  {
-                    MoviesView().tabItem {
-                        tabbarItem(text: "Movies", imageName: "film") }
-                        .tag(Tab.movie)
-                    DiscoverView().tabItem {
-                        tabbarItem(text: "Discover", imageName: "square.stack") }
-                        .tag(Tab.discover)
-                })
+        TabView(selection: $selectedTab) {
+            MoviesView().tabItem {
+                tabbarItem(text: "Movies", imageName: "film") }
+                    .tag(Tab.movie)
+            DiscoverView().tabItem {
+                tabbarItem(text: "Discover", imageName: "square.stack") }
+                    .tag(Tab.discover)
+        }
     }
 
     private func tabbarItem(text: String, imageName: String) -> some View {
