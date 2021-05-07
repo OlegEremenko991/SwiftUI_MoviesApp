@@ -10,13 +10,13 @@
 		671D962C25EF62F6008C8F02 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D962B25EF62F6008C8F02 /* Movie.swift */; };
 		671D962F25EF64DB008C8F02 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D962E25EF64DB008C8F02 /* Cast.swift */; };
 		671D963225EF6643008C8F02 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D963125EF6643008C8F02 /* Review.swift */; };
-		671D963625EF6745008C8F02 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 671D963525EF6745008C8F02 /* Alamofire */; };
 		671D963925EF6777008C8F02 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D963825EF6777008C8F02 /* NetworkManager.swift */; };
 		671D963C25EF68A9008C8F02 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D963B25EF68A9008C8F02 /* API.swift */; };
 		671D963F25EF68EF008C8F02 /* MovieURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D963E25EF68EF008C8F02 /* MovieURL.swift */; };
 		671D964225EF6984008C8F02 /* MovieDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D964125EF6984008C8F02 /* MovieDownloadManager.swift */; };
 		671D964525EF6B01008C8F02 /* MovieReviewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D964425EF6B01008C8F02 /* MovieReviewsManager.swift */; };
 		671D964925EF6C93008C8F02 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D964825EF6C93008C8F02 /* Constant.swift */; };
+		6733C58326457F3500220326 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6733C58226457F3500220326 /* Alamofire */; };
 		675AE48425F55F5B003554FD /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BCCDDE25F3A9DE00CA322B /* AsyncImage.swift */; };
 		675AE48725F55F62003554FD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BCCDD525F3A52F00CA322B /* ImageLoader.swift */; };
 		675AE48A25F55F6F003554FD /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BCCDDB25F3A98A00CA322B /* EnvironmentValues+ImageCache.swift */; };
@@ -122,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				671D963625EF6745008C8F02 /* Alamofire in Frameworks */,
+				6733C58326457F3500220326 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +278,7 @@
 			);
 			name = MoviesApp;
 			packageProductDependencies = (
-				671D963525EF6745008C8F02 /* Alamofire */,
+				6733C58226457F3500220326 /* Alamofire */,
 			);
 			productName = Movies_App;
 			productReference = 67E1F51D25ECBDF3007EDACC /* MoviesApp.app */;
@@ -311,7 +311,7 @@
 			);
 			mainGroup = 67E1F51425ECBDF3007EDACC;
 			packageReferences = (
-				671D963425EF6745008C8F02 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				6733C58126457F3500220326 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 67E1F51E25ECBDF3007EDACC /* Products */;
 			projectDirPath = "";
@@ -494,7 +494,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -549,7 +549,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -579,7 +579,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oleg991.MoviesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -603,7 +603,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oleg991.MoviesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -640,20 +640,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		671D963425EF6745008C8F02 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		6733C58126457F3500220326 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.1;
+				minimumVersion = 5.4.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		671D963525EF6745008C8F02 /* Alamofire */ = {
+		6733C58226457F3500220326 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 671D963425EF6745008C8F02 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 6733C58126457F3500220326 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
