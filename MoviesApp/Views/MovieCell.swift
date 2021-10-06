@@ -8,17 +8,12 @@
 import SwiftUI
 
 struct MovieCell: View {
-
-    // MARK: - Public properties
-
     var movie: Movie
-
-    // MARK: - View
 
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
             moviePoster
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: .zero) {
                 movieTitle
                 HStack {
                     movieVotes
@@ -28,8 +23,10 @@ struct MovieCell: View {
             }
         }
     }
+}
 
-    private var moviePoster: some View {
+private extension MovieCell {
+    var moviePoster: some View {
         AsyncImage(url: URL(string: movie.posterPath)!) {
             Rectangle().foregroundColor(Color.gray.opacity(0.4))
         } image: {
@@ -44,43 +41,41 @@ struct MovieCell: View {
         .shadow(radius: 15)
     }
 
-    private var movieTitle: some View {
+    var movieTitle: some View {
         Text(movie.titleWithLanguage)
             .font(.system(size: 15))
             .bold()
             .foregroundColor(.blue)
     }
 
-    private var movieVotes: some View {
+    var movieVotes: some View {
         ZStack {
             Circle() // Main circle
-                .trim(from: 0, to: CGFloat(movie.voteAverage))
+                .trim(from: .zero, to: CGFloat(movie.voteAverage))
                 .stroke(Color.orange, lineWidth: 4)
                 .frame(width: 50)
                 .rotationEffect(.degrees(-90))
             Circle() // Secondary circle
-                .trim(from: 0, to: 1)
+                .trim(from: .zero, to: 1)
                 .stroke(Color.orange.opacity(0.2), lineWidth: 4)
                 .frame(width: 50)
                 .rotationEffect(.degrees(-90))
-            Text(String.init(format: "%0.2f", movie.vote_average ?? 0.0))
+            Text(String.init(format: "%0.2f", movie.vote_average ?? .zero))
                 .foregroundColor(.orange)
                 .font(.subheadline)
         }
         .frame(height: 80)
     }
 
-    private var movieReleaseDate: some View {
+    var movieReleaseDate: some View {
         Text(movie.release_date ?? "")
             .foregroundColor(.black)
             .font(.subheadline)
     }
 
-    private var movieOverview: some View {
+    var movieOverview: some View {
         Text(movie.overview ?? "")
             .font(.body)
             .foregroundColor(.gray)
     }
-
 }
-

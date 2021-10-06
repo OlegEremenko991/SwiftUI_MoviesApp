@@ -8,13 +8,8 @@
 import SwiftUI
 
 final class MovieDownloadManager: ObservableObject {
-
-    // MARK: - Public properties
-
     @Published var movies = [Movie]()
     @Published var cast   = [Cast]()
-
-    // MARK: - Public methods
 
     func getNowPlaying() {
         getMovies(movieURL: .nowPlaying)
@@ -39,10 +34,10 @@ final class MovieDownloadManager: ObservableObject {
             }
         }
     }
+}
 
-    // MARK: - Private methods
-
-    private func getMovies(movieURL: MovieURL) {
+private extension MovieDownloadManager {
+    func getMovies(movieURL: MovieURL) {
         NetworkManager<MovieResponse>.fetch(from: movieURL.urlString) { result in
             switch result {
             case .success(let movieResponse):
@@ -52,6 +47,5 @@ final class MovieDownloadManager: ObservableObject {
             }
         }
     }
-
 }
 

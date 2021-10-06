@@ -8,7 +8,7 @@
 import Foundation
 
 struct MovieResponse: Codable {
-    var results           : [Movie]
+    var results: [Movie]
 }
 
 struct Movie: Codable, Identifiable {
@@ -34,9 +34,9 @@ struct Movie: Codable, Identifiable {
 
     var voteAverage       : Double {
         if let avg = vote_average {
-            return avg / 10.0
+            return avg / 10
         }
-        return 0.0
+        return .zero
     }
 
     var titleWithLanguage : String {

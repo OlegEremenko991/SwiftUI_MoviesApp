@@ -9,20 +9,13 @@ import Combine
 import UIKit
 
 final class ImageLoader: ObservableObject {
+    @Published var image: UIImage?
 
-    // MARK: - Public properties
-
-    @Published var image                    : UIImage?
-
-    // MARK: - Private properties
-
-    private(set) var isLoading              = false
+    private(set) var isLoading = false
     private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
-    private let url                         : URL
-    private var cache                       : ImageCache?
-    private var cancellable                 : AnyCancellable?
-
-    // MARK: - Lifecycle
+    private let url: URL
+    private var cache: ImageCache?
+    private var cancellable: AnyCancellable?
 
     init(url: URL, cache: ImageCache? = nil) {
         self.url = url
@@ -33,10 +26,10 @@ final class ImageLoader: ObservableObject {
         cancel()
     }
 
-    // MARK: - Public methods
-
     func load() {
-        guard !isLoading else { return }
+        if isLoading {
+            return
+        }
 
         if let image = cache?[url] {
             self.image = image
@@ -56,12 +49,22 @@ final class ImageLoader: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in self?.image = $0 }
     }
+}
 
-    // MARK: - Private methods
+private extension ImageLoader {
+    func onStart() {
+        isLoading = true
+    }
 
-    private func onStart()                { isLoading = true }
-    private func cache(_ image: UIImage?) { image.map { cache?[url] = $0 } }
-    private func onFinish()               { isLoading = false }
-    private func cancel()                 { cancellable?.cancel() }
+    func cache(_ image: UIImage?) {
+        image.map { cache?[url] = $0 }
+    }
 
+    func onFinish() {
+        isLoading = false
+    }
+
+    func cancel() {
+        cancellable?.cancel()
+    }
 }

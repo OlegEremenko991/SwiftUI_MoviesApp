@@ -12,7 +12,7 @@ enum MovieURL: String {
     case upcoming   = "upcoming"
     case popular    = "popular"
 
-    public var urlString: String {
+    var urlString: String {
         "\(Constant.baseURL)\(self.rawValue)?api_key=\(API.key)&language=en-US&page=1"
     }
 }

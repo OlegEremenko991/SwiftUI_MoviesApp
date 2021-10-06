@@ -14,7 +14,10 @@ enum NetworkError: Error {
 }
 
 final class NetworkManager<T: Codable> {
-    static func fetch(from urlString: String, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    static func fetch(
+        from urlString: String,
+        completion: @escaping (Result<T, NetworkError>) -> Void
+    ) {
         AF.request(urlString)
             .responseDecodable(of: T.self) { response in
                 if let error = response.error {

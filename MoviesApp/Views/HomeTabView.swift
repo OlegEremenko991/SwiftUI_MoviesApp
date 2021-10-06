@@ -8,30 +8,36 @@
 import SwiftUI
 
 struct HomeTabView: View {
-
-    // MARK: - Private properties
-
-    private enum Tab: Int {
-        case movie
-        case discover
-    }
-
     @State private var selectedTab = Tab.movie
-
-    // MARK: - View
 
     var body: some View {
         TabView(selection: $selectedTab) {
             MoviesView().tabItem {
-                tabbarItem(text: "Movies", imageName: "film") }
-                    .tag(Tab.movie)
+                tabbarItem(
+                    text: "Movies",
+                    imageName: "film")
+            }
+            .tag(Tab.movie)
             DiscoverView().tabItem {
-                tabbarItem(text: "Discover", imageName: "square.stack") }
-                    .tag(Tab.discover)
+                tabbarItem(
+                    text: "Discover",
+                    imageName: "square.stack")
+            }
+            .tag(Tab.discover)
         }
     }
+}
 
-    private func tabbarItem(text: String, imageName: String) -> some View {
+private extension HomeTabView {
+    enum Tab: Int {
+        case movie
+        case discover
+    }
+
+    func tabbarItem(
+        text: String,
+        imageName: String
+    ) -> some View {
         VStack {
             Image(systemName: imageName)
                 .imageScale(.large)
@@ -39,8 +45,6 @@ struct HomeTabView: View {
         }
     }
 }
-
-// MARK: - Preview
 
 struct HomeTabView_Previews: PreviewProvider {
     static var previews: some View {

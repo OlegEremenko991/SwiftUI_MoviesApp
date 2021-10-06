@@ -8,30 +8,20 @@
 import SwiftUI
 
 final class MovieReviewManager: ObservableObject {
-
-    // MARK: - Public properties
-
     @Published var reviews = [Review]()
-
-    // MARK: - Private properties
-
-    private var movie      : Movie
-
-    // MARK: - Init
+    private var movie: Movie
 
     init(movie: Movie) {
         self.movie = movie
     }
 
-    // MARK: - Public methods
-
     func getMovieReviews() {
         getReview(for: movie)
     }
+}
 
-    // MARK: - Private methods
-
-    private func getReview(for movie: Movie) {
+private extension MovieReviewManager {
+    func getReview(for movie: Movie) {
         let urlString = "\(Constant.baseURL)\(movie.id ?? 100)/\(Constant.reviewPath)?api_key=\(API.key)"
         NetworkManager<ReviewResponse>.fetch(from: urlString) { result in
             switch result {
@@ -42,5 +32,4 @@ final class MovieReviewManager: ObservableObject {
             }
         }
     }
-
 }

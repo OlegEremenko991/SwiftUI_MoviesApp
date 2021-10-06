@@ -8,17 +8,9 @@
 import SwiftUI
 
 struct SettingsView: View {
-
-    // MARK: - Public properties
-
-    @Binding var isPresented         : Bool
-
-    // MARK: - Private properties
-
+    @Binding var isPresented: Bool
     @State private var selectedGenre = 1
-    @State private var email         = ""
-
-    // MARK: - View
+    @State private var email = ""
 
     var body: some View {
         NavigationView {
@@ -32,10 +24,14 @@ struct SettingsView: View {
             .navigationTitle("Settings")
         }
     }
+}
 
-    private var genrePicker: some View {
-        Picker(selection: $selectedGenre,
-               label: Text("Favorite Genre")) {
+private extension SettingsView {
+    var genrePicker: some View {
+        Picker(
+            selection: $selectedGenre,
+            label: Text("Favorite Genre")
+        ) {
             Text("Action").tag(1)
             Text("Comedy").tag(2)
             Text("Horror").tag(3)
@@ -43,7 +39,7 @@ struct SettingsView: View {
         }
     }
 
-    private var saveButton: some View {
+    var saveButton: some View {
         Button {
             isPresented.toggle()
         } label: {
@@ -51,8 +47,6 @@ struct SettingsView: View {
         }
     }
 }
-
-// MARK: - Preview
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {

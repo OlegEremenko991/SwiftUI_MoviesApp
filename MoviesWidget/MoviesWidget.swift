@@ -14,7 +14,6 @@ struct MovieEntry: TimelineEntry {
 }
 
 struct Provider: TimelineProvider {
-
     @AppStorage("RecentlyOpenedMovie", store: UserDefaults(suiteName: "group.com.oleg991.MoviesApp"))
     var recentlyOpenedMovie = Data()
 

@@ -12,7 +12,6 @@ protocol ImageCache {
 }
 
 struct TempImageCache: ImageCache {
-
     private let cache: NSCache<NSURL, UIImage> = {
         let cache = NSCache<NSURL, UIImage>()
         cache.countLimit = 100
@@ -22,8 +21,12 @@ struct TempImageCache: ImageCache {
 
     subscript(_ url: URL) -> UIImage? {
         get { cache.object(forKey: url as NSURL) }
-        set { newValue == nil ? cache.removeObject(forKey: url as NSURL)
-                              : cache.setObject(newValue!, forKey: url as NSURL)
+        set {
+            if let newValue = newValue {
+                cache.setObject(newValue, forKey: url as NSURL)
+            } else {
+                cache.removeObject(forKey: url as NSURL)
+            }
         }
     }
 }

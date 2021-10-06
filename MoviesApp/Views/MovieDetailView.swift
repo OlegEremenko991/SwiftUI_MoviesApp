@@ -8,33 +8,31 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-
-    // MARK: - Public properties
-
     @AppStorage("RecentlyOpenedMovie", store: UserDefaults(suiteName: "group.com.oleg991.MoviesApp"))
-    var recentlyOpenedMovie               = Data()
+    var recentlyOpenedMovie = Data()
 
-    var movie                             : Movie
+    var movie: Movie
 
-    // MARK: - Private properties
-
-    @StateObject private var loader       : ImageLoader
+    @StateObject private var loader: ImageLoader
     @StateObject private var movieManager = MovieDownloadManager()
-
-    // MARK: - Init
 
     init(movie: Movie) {
         self.movie = movie
-        _loader = StateObject(wrappedValue: ImageLoader(url: URL(string: movie.posterPath)!,
-                                                        cache: Environment(\.imageCache).wrappedValue))
+        _loader = StateObject(
+            wrappedValue: ImageLoader(
+                url: URL(string: movie.posterPath)!,
+                cache: Environment(\.imageCache).wrappedValue
+            )
+        )
     }
-
-    // MARK: - View
 
     var body: some View {
         ZStack(alignment: .top) {
             backgroundView
-            ScrollView(.vertical, showsIndicators: false) {
+            ScrollView(
+                .vertical,
+                showsIndicators: false
+            ) {
                 VStack(alignment: .leading) {
                     headerView
                     moviePosterView
@@ -50,13 +48,15 @@ struct MovieDetailView: View {
         .edgesIgnoringSafeArea(.all)
         .onAppear { save(movie) }
     }
+}
 
-    private var backgroundView: some View {
+private extension MovieDetailView {
+    var backgroundView: some View {
         imageView.onAppear { loader.load() }
-            .blur(radius: 100)
+        .blur(radius: 100)
     }
 
-    private var imageView: some View {
+    var imageView: some View {
         Group {
             if let image = loader.image {
                 Image(uiImage: image)
@@ -68,7 +68,7 @@ struct MovieDetailView: View {
         }
     }
 
-    private var headerView: some View {
+    var headerView: some View {
         VStack {
             Text(movie.titleWithLanguage)
                 .font(.title)
@@ -78,7 +78,7 @@ struct MovieDetailView: View {
         .foregroundColor(.white)
     }
 
-    private var moviePosterView: some View {
+    var moviePosterView: some View {
         HStack(alignment: .center) {
             Spacer()
             imageView
@@ -88,7 +88,7 @@ struct MovieDetailView: View {
         }
     }
 
-    private var movieOverView: some View {
+    var movieOverView: some View {
         Text(movie.overview ?? "-")
             .font(.body)
             .foregroundColor(.white)
@@ -96,7 +96,7 @@ struct MovieDetailView: View {
             .padding(.top, 16)
     }
 
-    private var reviewLink: some View {
+    var reviewLink: some View {
         VStack {
             Divider()
             NavigationLink(destination: MovieReviewView(movie: movie)) {
@@ -112,12 +112,18 @@ struct MovieDetailView: View {
         }
     }
 
-    private var castInfo: some View {
+    var castInfo: some View {
         VStack(alignment: .leading) {
             Text("Cast")
                 .foregroundColor(.white)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: 20) {
+            ScrollView(
+                .horizontal,
+                showsIndicators: false
+            ) {
+                HStack(
+                    alignment: .top,
+                    spacing: 20
+                ) {
                     ForEach(movieManager.cast) { cast in
                         VStack {
                             AsyncImage(url: URL(string: cast.profilePhoto)!) {
@@ -147,12 +153,9 @@ struct MovieDetailView: View {
         .onAppear { movieManager.getCast(for: movie) }
     }
 
-    // MARK: - Private methods
-
-    private func save(_ movie: Movie) {
+    func save(_ movie: Movie) {
         guard let movieData = try? JSONEncoder().encode(movie) else { return }
         recentlyOpenedMovie = movieData
         print("save \(movie)")
     }
-
 }

@@ -8,21 +8,14 @@
 import SwiftUI
 
 struct MoviesView: View {
-
-    // MARK: - Private properties
-
     @StateObject private var movieManager = MovieDownloadManager()
-    @State private var searchTerm         = ""
-    @State private var selectionIndex     = 0
-    @State private var tabs               = ["Now Playing", "Upcoming", "Trending"]
-
-    // MARK: - Init
+    @State private var searchTerm = ""
+    @State private var selectionIndex = Int.zero
+    @State private var tabs = ["Now Playing", "Upcoming", "Trending"]
 
     init() {
         setupAppearance()
     }
-
-    // MARK: - View
 
     var body: some View {
         VStack {
@@ -36,8 +29,22 @@ struct MoviesView: View {
             Spacer()
         }
     }
+}
 
-    private var titleView: some View {
+private extension MoviesView {
+    func setupAppearance() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().selectionStyle = .none
+        UINavigationBar.appearance().backgroundColor = .clear
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().barTintColor = .orange
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.orange]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.orange]
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+    }
+
+    var titleView: some View {
         Text(tabs[selectionIndex])
             .font(.largeTitle)
             .bold()
@@ -45,7 +52,7 @@ struct MoviesView: View {
             .padding(.top)
     }
 
-    private var searchViewWithTextField: some View {
+    var searchViewWithTextField: some View {
         HStack {
             Image(systemName: "magnifyingglass")
                 .imageScale(.medium)
@@ -54,7 +61,7 @@ struct MoviesView: View {
         }
     }
 
-    private var moviesList: some View {
+    var moviesList: some View {
         List {
             ForEach(movieManager.movies.filter {
                 searchTerm.isEmpty ? true : $0.title?.lowercased()
@@ -70,7 +77,7 @@ struct MoviesView: View {
         .onAppear { movieManager.getNowPlaying() }
     }
 
-    private var segmentedControlPicker: some View {
+    var segmentedControlPicker: some View {
         VStack {
             Picker("_", selection: $selectionIndex) {
                 ForEach(0..<tabs.count) { index in
@@ -92,23 +99,7 @@ struct MoviesView: View {
         }
         .padding()
     }
-
-    // MARK: - Private methods
-
-    private func setupAppearance() {
-        UITableView.appearance().backgroundColor = .clear
-        UITableViewCell.appearance().selectionStyle = .none
-        UINavigationBar.appearance().backgroundColor = .clear
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().barTintColor = .orange
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.orange]
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.orange]
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().shadowImage = UIImage()
-    }
 }
-
-// MARK: - Preview
 
 struct MoviesView_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct MainContentView: View {
-
-    // MARK: - Private properties
-
     @State private var showSettings = false
-
-    // MARK: - View
 
     var body: some View {
         NavigationView {
@@ -21,17 +16,21 @@ struct MainContentView: View {
                 HomeTabView()
             }
             .navigationBarTitle("Movies", displayMode: .automatic)
-            .navigationBarItems(trailing:
-                                    HStack {
-                                        settingsButton
-                                    })
+            .navigationBarItems(
+                trailing:
+                    HStack {
+                        settingsButton
+                    }
+            )
             .sheet(isPresented: $showSettings) {
                 SettingsView(isPresented: $showSettings)
             }
         }
     }
+}
 
-    private var settingsButton: some View {
+private extension MainContentView {
+    var settingsButton: some View {
         Button {
             showSettings.toggle()
         } label: {
@@ -44,8 +43,6 @@ struct MainContentView: View {
         }
     }
 }
-
-// MARK: - Preview
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

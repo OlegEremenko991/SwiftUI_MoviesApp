@@ -8,24 +8,14 @@
 import SwiftUI
 
 struct MovieReviewView: View {
-
-    // MARK: Public properties
-
-    var movie                                      : Movie
-
-    // MARK: - Private properties
-
-    @ObservedObject private var movieReviewManager : MovieReviewManager
-
-    // MARK: - Init
+    var movie: Movie
+    @ObservedObject private var movieReviewManager: MovieReviewManager
 
     init(movie: Movie) {
         self.movie = movie
         self.movieReviewManager = MovieReviewManager(movie: movie)
         setupTableViewAppearance()
     }
-
-    // MARK: - View
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -49,13 +39,12 @@ struct MovieReviewView: View {
         }
         .edgesIgnoringSafeArea(.all)
     }
+}
 
-    // MARK: - Private methods
-
-    private func setupTableViewAppearance() {
-        UITableView.appearance().separatorStyle      = .none
-        UITableView.appearance().backgroundColor     = .clear
+private extension MovieReviewView {
+    func setupTableViewAppearance() {
+        UITableView.appearance().separatorStyle = .none
+        UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
     }
-
 }

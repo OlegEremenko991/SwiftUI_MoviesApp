@@ -8,15 +8,10 @@
 import SwiftUI
 
 struct DiscoverView: View {
-
-    // MARK: - Private properties
-
     @StateObject private var movieManager = MovieDownloadManager()
-    @State private var offset             : CGFloat = 0
-    @State private var index              = 0
-    private let spacing                   : CGFloat = 10
-
-    // MARK: - View
+    @State private var offset = CGFloat.zero
+    @State private var index = Int.zero
+    private let spacing = CGFloat(10)
 
     var body: some View {
         GeometryReader { geo in
@@ -52,8 +47,10 @@ struct DiscoverView: View {
             .onAppear { movieManager.getPopular() }
         }
     }
+}
 
-    private func movieCard(movie: Movie) -> some View {
+private extension DiscoverView {
+    func movieCard(movie: Movie) -> some View {
         ZStack(alignment: .bottom) {
             poster(movie: movie)
             detailView(movie: movie)
@@ -62,7 +59,7 @@ struct DiscoverView: View {
         .cornerRadius(12)
     }
 
-    private func poster(movie: Movie) -> some View{
+    func poster(movie: Movie) -> some View{
         AsyncImage(url: URL(string: movie.posterPath)!) {
             Rectangle()
                 .foregroundColor(.gray)
@@ -88,7 +85,7 @@ struct DiscoverView: View {
         .cornerRadius(12)
     }
 
-    private func detailView(movie: Movie) -> some View {
+    func detailView(movie: Movie) -> some View {
         VStack(alignment: .leading) {
             Spacer()
             VStack(alignment: .leading) {
@@ -121,8 +118,6 @@ struct DiscoverView: View {
         .padding()
     }
 }
-
-// MARK: - Preview
 
 struct DiscoverView_Previews: PreviewProvider {
     static var previews: some View {
